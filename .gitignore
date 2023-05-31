@@ -200,6 +200,7 @@ providers/common/include/prov/der_sm2.h
 .#*
 \#*#
 *~
+.vscode
 
 # Certificate symbolic links
 *.0
