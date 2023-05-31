@@ -17,6 +17,16 @@
 
 #include <openssl/err.h>
 
+#ifndef SO_ERROR
+#define SO_ERROR   4
+#endif
+#ifndef SO_KEEPALIVE
+#define SO_KEEPALIVE       9
+#endif
+#ifndef SO_REUSEADDR
+#define SO_REUSEADDR       2
+#endif
+
 #ifndef OPENSSL_NO_SOCK
 # ifdef SO_MAXCONN
 #  define MAX_LISTEN  SO_MAXCONN

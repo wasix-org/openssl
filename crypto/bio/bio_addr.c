@@ -196,7 +196,7 @@ unsigned short BIO_ADDR_rawport(const BIO_ADDR *ap)
 #endif
     return 0;
 }
-
+extern char *inet_ntoa (struct in_addr __in);   //SEB hack
 /*-
  * addr_strings - helper function to get host and service names
  * @ap: the BIO_ADDR that has the input info
@@ -813,6 +813,7 @@ int BIO_lookup_ex(const char *host, const char *service, int lookup_type,
             he = gethostbyname(host);
 
             if (he == NULL) {
+#if 0
 #ifndef OPENSSL_SYS_WINDOWS
                 /*
                  * This might be misleading, because h_errno is used as if
@@ -836,6 +837,7 @@ int BIO_lookup_ex(const char *host, const char *service, int lookup_type,
 #else
                 ERR_raise_data(ERR_LIB_SYS, get_last_socket_error(),
                                "calling gethostbyname()");
+#endif
 #endif
                 ret = 0;
                 goto err;

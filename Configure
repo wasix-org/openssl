@@ -409,6 +409,7 @@ my @disablables = (
     "acvp-tests",
     "afalgeng",
     "argon2",
+    "apps",
     "aria",
     "asan",
     "asm",

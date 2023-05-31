@@ -100,7 +100,15 @@ int BIO_get_port(const char *str, unsigned short *port_ptr)
     return ret;
 }
 # endif
-
+#ifndef SO_ERROR
+#define SO_ERROR   4
+#endif
+#ifndef SO_KEEPALIVE
+#define SO_KEEPALIVE       9
+#endif
+#ifndef SO_REUSEADDR
+#define SO_REUSEADDR       2
+#endif
 int BIO_sock_error(int sock)
 {
     int j = 0, i;
