@@ -21,3 +21,9 @@ Using the `-Wl` argument in the `CC` variable will trigger some anoying warning,
 The `Configure` should run successfully. So a simple `make` (or `make -j4` if you are impaciant) will build the `libssl.a` and `libcrypto.a` in the current folder.
 
 Those library can then be used to link with other WASIX/wasm32 program, like CURL..
+But before they are usable, you need to manualy run ranlib on them (not sure why it's not done automaticaly):
+```
+llvm-ranlib-15 libcrypto.a
+llvm-ranlib-15 libsll.a
+```
+Libs are now ready to be used on other WASIX projects
