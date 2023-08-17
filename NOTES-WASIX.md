@@ -12,7 +12,7 @@ to build [wasix-libc](https://github.com/wasix-org/wasix-libc) sysroot, and have
 
 You can configure the project with this command line:
 ```
-AR=llvm-ar-15 NM=llvm-nm-15 CC="clang-15 --target=wasm32-wasi" CFLAGS="--sysroot=/PATH/TO/sysroot32 -matomics -mbulk-memory -mmutable-globals -pthread -mthread-model posix -ftls-model=local-exec -fno-trapping-math -D_WASI_EMULATED_MMAN -D_WASI_EMULATED_SIGNAL -D_WASI_EMULATED_PROCESS_CLOCKS " LDFLAGS="-Wl,--shared-memory -Wl,--max-memory=4294967296 -Wl,--import-memory -Wl,--export-dynamic -Wl,--export=__heap_base -Wl,--export=__stack_pointer -Wl,--export=__data_end -Wl,--export=__wasm_init_tls -Wl,--export=__wasm_signal -Wl,--export=__tls_size -Wl,--export=__tls_align -Wl,--export=__tls_base" ./Configure -static no-asm no-tests no-apps no-afalgeng -DUSE_TIMEGM -DOPENSSL_NO_UNIX_SOCK -DOPENSSL_NO_SECURE_MEMORY -DOPENSSL_NO_DGRAM
+LD=llvm-ld-15 AR=llvm-ar-15 NM=llvm-nm-15 CC="clang-15 --target=wasm32-wasi" CFLAGS="--sysroot=/PATH/TO/sysroot32 -matomics -mbulk-memory -mmutable-globals -pthread -mthread-model posix -ftls-model=local-exec -fno-trapping-math -D_WASI_EMULATED_MMAN -D_WASI_EMULATED_SIGNAL -D_WASI_EMULATED_PROCESS_CLOCKS " LDFLAGS="-Wl,--shared-memory -Wl,--max-memory=4294967296 -Wl,--import-memory -Wl,--export-dynamic -Wl,--export=__heap_base -Wl,--export=__stack_pointer -Wl,--export=__data_end -Wl,--export=__wasm_init_tls -Wl,--export=__wasm_signal -Wl,--export=__tls_size -Wl,--export=__tls_align -Wl,--export=__tls_base" ./Configure -static no-asm no-tests no-apps no-afalgeng -DUSE_TIMEGM -DOPENSSL_NO_SECURE_MEMORY -DOPENSSL_NO_DGRAM -DOPENSSL_THREADS
 ```
 
 That's a quite huge command line. You need to adapt the `--sysroot` parameter to the actual path where your wasix sysroot32 is.
